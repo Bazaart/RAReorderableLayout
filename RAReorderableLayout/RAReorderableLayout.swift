@@ -236,7 +236,7 @@ open class RAReorderableLayout: UICollectionViewFlowLayout, UIGestureRecognizerD
         }
         
         displayLink = CADisplayLink(target: self, selector: #selector(RAReorderableLayout.continuousScroll))
-        displayLink!.add(to: RunLoop.main, forMode: RunLoop.Mode.common)
+        displayLink!.add(to: RunLoop.main, forMode: RunLoop.Mode.commonModes)
     }
     
     fileprivate func invalidateDisplayLink() {
@@ -563,7 +563,7 @@ private class RACellFakeView: UIView {
                 shadowAnimation.fromValue = 0
                 shadowAnimation.toValue = 0.7
                 shadowAnimation.isRemovedOnCompletion = false
-                shadowAnimation.fillMode = CAMediaTimingFillMode.forwards
+                shadowAnimation.fillMode = kCAFillModeForwards
                 self.layer.add(shadowAnimation, forKey: "applyShadow")
             },
             completion: { _ in
@@ -584,7 +584,7 @@ private class RACellFakeView: UIView {
                 shadowAnimation.fromValue = 0.7
                 shadowAnimation.toValue = 0
                 shadowAnimation.isRemovedOnCompletion = false
-                shadowAnimation.fillMode = CAMediaTimingFillMode.forwards
+                shadowAnimation.fillMode = kCAFillModeForwards
                 self.layer.add(shadowAnimation, forKey: "removeShadow")
             },
             completion: { _ in
